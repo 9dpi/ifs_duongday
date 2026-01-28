@@ -141,7 +141,7 @@ def generate_fire_items(count=9):
         grid_html += f"""
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
+                        <div class="inc-badge tag-fire">🔥 CHÁY</div>
                         <div style="font-size:12px; color:var(--text-sub)">{time}</div>
                     </div>
                     <img src="images/cam-0{img}.png" class="inc-img" alt="Inc">
