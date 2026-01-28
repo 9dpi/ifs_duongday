@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFS CAMERA AI - Quản trị khu vực</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .channel-card-icon {
+            width: 50px;
+            height: 50px;
+            background: #1e293b;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .status-active {
+            color: var(--success);
+        }
+
+        .status-inactive {
+            color: var(--text-sub);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div style="display:flex; align-items:center">
+            <button class="mobile-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+            </button>
+            <a href="dashboard.html" class="brand" style="text-decoration:none">
+                <div class="logo-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                    </svg>
+                </div> IFS - ĐƯỜNG DÂY
+            </a>
+        </div>
+
+        <div class="nav-menu" id="mainMenu">
+            <div class="nav-wrapper"><a href="dashboard.html" class="nav-link">TRANG CHỦ</a></div>
+            <div class="nav-wrapper"><a href="giamsattructiep.html" class="nav-link">GIÁM SÁT TRỰC TIẾP</a></div>
+            <div class="nav-wrapper"><a href="giamsatsuco.html" class="nav-link">GIÁM SÁT SỰ CỐ</a></div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="dropdown-menu">
+                    <a href="quan_ly_su_co_doi_tuong.html" class="menu-link">Đối tượng xâm nhập vùng cấm</a>
+                    <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link">Cháy khói</a>
+                    <a href="quan_ly_su_co_do_nghieng.html" class="menu-link">Độ nghiêng vượt ngưỡng</a>
+                    <a href="quan_ly_su_co_chieu_cao_an_toan.html" class="menu-link">Chiều cao an toàn phương tiện</a>
+                    <a href="#" class="menu-link">Vật thể lạ</a>
+                    <a href="#" class="menu-link">Đèn báo hiệu</a>
+                </div>
+            </div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="dropdown-menu">
+                    <a href="huong_dan_su_dung.html" class="menu-link">Hướng dẫn sử dụng</a>
+                    <a href="danh_sach_su_co.html" class="menu-link">Báo cáo sự cố đường dây</a>
+                    <a href="bao_cao_su_co_den_hieu.html" class="menu-link">Báo cáo sự cố đèn báo hiệu</a>
+                </div>
+            </div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                 <div class="dropdown-menu">
+                    <a href="thietlapcanhbao_kenhcanhbao.html" class="menu-link">Kênh cảnh báo</a>
+                    <a href="theodoidiemdo_bocanhbao.html" class="menu-link">Bộ cảnh báo</a>
+                 </div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="theme-switch" onclick="toggleTheme()">
+                <div class="switch-knob"></div>
+            </div>
+            <div
+                style="width:32px; height:32px; background:#E5E7EB; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#4B5563">
+                A</div>
+        </div>
+    </nav>
+
+    <main class="content-area incident-list-layout">
+
+        <!-- FILTER BAR - Identical Style to danh_sach_kenh_canh_bao.html -->
+        <section class="filter-bar">
+            <div class="filter-group">
+                <div class="cam-ctrl-group">
+                    <div style="font-size: 14px; font-weight: 700; color: white; margin-bottom: 2px;">Quản lý Khu vực
+                    </div>
+                </div>
+                <div class="cam-ctrl-group">
+                    <span class="cam-ctrl-label">Mã/Tên khu vực</span>
+                    <input type="text" class="search-box" style="min-width: 180px;" placeholder="Nhập giá trị...">
+                </div>
+                <div class="cam-ctrl-group">
+                    <span class="cam-ctrl-label">Thiết bị</span>
+                    <select class="cam-select" style="min-width: 150px;">
+                        <option>Chọn giá trị</option>
+                        <option>server01_PQ</option>
+                        <option>server02_DN</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-group">
+                <button class="cam-btn-save">🔍 Tìm</button>
+                <div class="view-switcher">
+                    <div class="view-btn active" onclick="switchView('grid')" title="Xem dạng lưới">🪟</div>
+                    <div class="view-btn" onclick="switchView('list')" title="Xem dạng danh sách">📜</div>
+                </div>
+                <button class="btn-export" style="background: var(--primary);">➕ Thêm</button>
+            </div>
+        </section>
+
+        <!-- AREA GRID (CARD VIEW) - 8 items -->
+        <section class="incident-grid">
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 01</div>
+                    <div class="inc-card-title">PHÚ QUỐC</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: phuquoc</div>
+                        <div class="meta-item">🖥️ Thiết bị: server01_PQ</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 02</div>
+                    <div class="inc-card-title">ĐÀ NẴNG</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: danang</div>
+                        <div class="meta-item">🖥️ Thiết bị: server02_DN</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 03</div>
+                    <div class="inc-card-title">HÀ NỘI</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: hanoi</div>
+                        <div class="meta-item">🖥️ Thiết bị: server03_HN</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 04</div>
+                    <div class="inc-card-title">THỪA THIÊN HUẾ</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: hue</div>
+                        <div class="meta-item">🖥️ Thiết bị: server04_HUE</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 05</div>
+                    <div class="inc-card-title">QUẢNG NAM</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: quangnam</div>
+                        <div class="meta-item">🖥️ Thiết bị: server05_QN</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 06</div>
+                    <div class="inc-card-title">BÌNH ĐỊNH</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: binhdinh</div>
+                        <div class="meta-item">🖥️ Thiết bị: server06_BD</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 07</div>
+                    <div class="inc-card-title">NHA TRANG</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: nhatrang</div>
+                        <div class="meta-item">🖥️ Thiết bị: server07_NT</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-card">
+                <div class="inc-card-content">
+                    <div class="channel-card-icon">📍</div>
+                    <div class="inc-card-id">STT: 08</div>
+                    <div class="inc-card-title">VŨNG TÀU</div>
+                    <div class="inc-card-meta">
+                        <div class="meta-item">🆔 ID: vungtau</div>
+                        <div class="meta-item">🖥️ Thiết bị: server08_VT</div>
+                    </div>
+                </div>
+                <div class="inc-card-footer">
+                    <div class="inc-status status-active">● Hoạt động</div>
+                    <div class="inc-actions">
+                        <span class="action-btn">👁️</span>
+                        <span class="action-btn">✏️</span>
+                        <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIST VIEW (TABLE) - 8 items -->
+        <section class="list-view-container">
+            <table class="inc-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã khu vực</th>
+                        <th>Tên khu vực</th>
+                        <th>Thiết bị</th>
+                        <th>Ghi chú</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>phuquoc</td>
+                        <td>Phú Quốc</td>
+                        <td>server01_PQ</td>
+                        <td>Khu vực phía Nam</td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>danang</td>
+                        <td>Đà Nẵng</td>
+                        <td>server02_DN</td>
+                        <td>Trung tâm điều hành</td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>hanoi</td>
+                        <td>Hà Nội</td>
+                        <td>server03_HN</td>
+                        <td>Khu vực phía Bắc</td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>hue</td>
+                        <td>Thừa Thiên Huế</td>
+                        <td>server04_HUE</td>
+                        <td>Tuyến 500kV</td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>quangnam</td>
+                        <td>Quảng Nam</td>
+                        <td>server05_QN</td>
+                        <td></td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>binhdinh</td>
+                        <td>Bình Định</td>
+                        <td>server06_BD</td>
+                        <td></td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>07</td>
+                        <td>nhatrang</td>
+                        <td>Nha Trang</td>
+                        <td>server07_NT</td>
+                        <td></td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>08</td>
+                        <td>vungtau</td>
+                        <td>Vũng Tàu</td>
+                        <td>server08_VT</td>
+                        <td></td>
+                        <td class="inc-actions">
+                            <span class="action-btn">👁️</span>
+                            <span class="action-btn">✏️</span>
+                            <span class="action-btn" style="color:var(--danger)">🗑️</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- PAGINATION -->
+        <footer class="pagination">
+            <span class="page-btn">«</span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn">2</span>
+            <span class="page-btn">»</span>
+            <div style="margin-left:auto; font-size:12px; color:var(--text-sub)">Hiển thị 1-9 của 16 khu vực</div>
+        </footer>
+
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

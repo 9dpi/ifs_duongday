@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFS - AI | Quản trị Camera</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div style="display:flex; align-items:center">
+            <button class="mobile-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+            </button>
+            <a href="dashboard.html" class="brand" style="text-decoration:none">
+                <div class="logo-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                    </svg>
+                </div> IFS - ĐƯỜNG DÂY
+            </a>
+        </div>
+
+        <div class="nav-menu" id="mainMenu">
+            <div class="nav-wrapper"><a href="dashboard.html" class="nav-link">TRANG CHỦ</a></div>
+            <div class="nav-wrapper"><a href="giamsattructiep.html" class="nav-link">GIÁM SÁT TRỰC TIẾP</a></div>
+            <div class="nav-wrapper"><a href="giamsatsuco.html" class="nav-link">GIÁM SÁT SỰ CỐ</a></div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="dropdown-menu">
+                    <a href="quan_ly_su_co_doi_tuong.html" class="menu-link">Đối tượng xâm nhập vùng cấm</a>
+                    <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link">Cháy khói</a>
+                    <a href="quan_ly_su_co_do_nghieng.html" class="menu-link">Độ nghiêng vượt ngưỡng</a>
+                    <a href="quan_ly_su_co_chieu_cao_an_toan.html" class="menu-link">Chiều cao an toàn phương tiện</a>
+                    <a href="#" class="menu-link">Vật thể lạ</a>
+                    <a href="#" class="menu-link">Đèn báo hiệu</a>
+                </div>
+            </div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="dropdown-menu">
+                    <a href="huong_dan_su_dung.html" class="menu-link">Hướng dẫn sử dụng</a>
+                    <a href="danh_sach_su_co.html" class="menu-link">Báo cáo sự cố đường dây</a>
+                    <a href="bao_cao_su_co_den_hieu.html" class="menu-link">Báo cáo sự cố đèn báo hiệu</a>
+                </div>
+            </div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                 <div class="dropdown-menu">
+                    <a href="thietlapcanhbao_kenhcanhbao.html" class="menu-link">Kênh cảnh báo</a>
+                    <a href="theodoidiemdo_bocanhbao.html" class="menu-link">Bộ cảnh báo</a>
+                 </div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="theme-switch" onclick="toggleTheme()">
+                <div class="switch-knob"></div>
+            </div>
+            <div
+                style="width:32px; height:32px; background:#E5E7EB; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#4B5563">
+                A</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="bread-crumb">Quản trị hệ thống / <span>Camera</span></div>
+
+        <div class="grid">
+            <!-- Filter Section -->
+            <div class="card filter-card">
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <div class="filter-label">Mã/tên camera</div>
+                        <input type="text" class="filter-input" placeholder="Nhập mã hoặc tên...">
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Chức năng</div>
+                        <select class="filter-input">
+                            <option>Chọn chức năng</option>
+                            <option>Camera mắt nhiệt</option>
+                            <option>Camera giám sát tổng quát</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Khu vực</div>
+                        <select class="filter-input">
+                            <option>Chọn khu vực</option>
+                            <option>SD1S_Liên Trì</option>
+                            <option>Trạm 110kV Nam Phú Quốc</option>
+                            <option>Biển đảo</option>
+                            <option>Công ty</option>
+                        </select>
+                    </div>
+                    <button class="btn-search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Tìm kiếm
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table/Card Section -->
+            <div class="card table-container-full">
+                <div
+                    style="padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border)">
+                    <div style="font-size: 15px; font-weight: 700; color: var(--primary); text-transform: uppercase;">
+                        Danh sách camera</div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="view-switcher">
+                            <button class="view-btn active" onclick="switchView('table')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                            </button>
+                            <button class="view-btn" onclick="switchView('card')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="btn-add">+ Thêm</button>
+                    </div>
+                </div>
+
+                <!-- TABLE VIEW -->
+                <div id="tableView">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;">STT</th>
+                                <th>Mã camera</th>
+                                <th>Tên camera</th>
+                                <th>Khu vực</th>
+                                <th>Chức năng camera</th>
+                                <th>Trạng thái</th>
+                                <th style="width: 220px; text-align: center;">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>bullet_matnhiet_dn</td>
+                                <td>Bullet - Mắt Nhiệt - DN</td>
+                                <td>SD1S_Liên Trì</td>
+                                <td>Camera mắt nhiệt</td>
+                                <td><span style="color:var(--success)">Đang bật</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-group">
+                                        <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 2v6h-6"></path>
+                                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                                <path d="M3 22v-6h6"></path>
+                                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Di chuyển">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="5 9 2 12 5 15"></polyline>
+                                                <polyline points="9 5 12 2 15 5"></polyline>
+                                                <polyline points="15 19 12 22 9 19"></polyline>
+                                                <polyline points="19 9 22 12 19 15"></polyline>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <line x1="12" y1="2" x2="12" y2="22"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Cấu hình ROI">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-blue" title="Sửa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-red" title="Xóa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>bullet_matthuong_dn</td>
+                                <td>Bullet - Mắt thường DN</td>
+                                <td>SD1S_Liên Trì</td>
+                                <td>Camera giám sát tổng quát</td>
+                                <td><span style="color:var(--success)">Đang bật</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-group">
+                                        <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 2v6h-6"></path>
+                                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                                <path d="M3 22v-6h6"></path>
+                                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Di chuyển">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="5 9 2 12 5 15"></polyline>
+                                                <polyline points="9 5 12 2 15 5"></polyline>
+                                                <polyline points="15 19 12 22 9 19"></polyline>
+                                                <polyline points="19 9 22 12 19 15"></polyline>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <line x1="12" y1="2" x2="12" y2="22"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Cấu hình ROI">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-blue" title="Sửa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-red" title="Xóa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>CAM_NHIET_FIX_01</td>
+                                <td>Cam nhiệt cố định</td>
+                                <td>Trạm 110kV Nam Phú Quốc</td>
+                                <td>Camera mắt nhiệt</td>
+                                <td><span style="color:var(--success)">Đang bật</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-group">
+                                        <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 2v6h-6"></path>
+                                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                                <path d="M3 22v-6h6"></path>
+                                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Di chuyển">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="5 9 2 12 5 15"></polyline>
+                                                <polyline points="9 5 12 2 15 5"></polyline>
+                                                <polyline points="15 19 12 22 9 19"></polyline>
+                                                <polyline points="19 9 22 12 19 15"></polyline>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <line x1="12" y1="2" x2="12" y2="22"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Cấu hình ROI">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-blue" title="Sửa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-red" title="Xóa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>CAM_NHIET_QUAY_01</td>
+                                <td>Cam nhiệt quay quét</td>
+                                <td>Trạm 110kV Nam Phú Quốc</td>
+                                <td>Camera mắt nhiệt</td>
+                                <td><span style="color:var(--success)">Đang bật</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-group">
+                                        <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 2v6h-6"></path>
+                                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                                <path d="M3 22v-6h6"></path>
+                                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Di chuyển">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="5 9 2 12 5 15"></polyline>
+                                                <polyline points="9 5 12 2 15 5"></polyline>
+                                                <polyline points="15 19 12 22 9 19"></polyline>
+                                                <polyline points="19 9 22 12 19 15"></polyline>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <line x1="12" y1="2" x2="12" y2="22"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Tiêu điểm">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <line x1="22" y1="12" x2="18" y2="12"></line>
+                                                <line x1="6" y1="12" x2="2" y2="12"></line>
+                                                <line x1="12" y1="6" x2="12" y2="2"></line>
+                                                <line x1="12" y1="22" x2="12" y2="18"></line>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Cấu hình ROI">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-blue" title="Sửa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-red" title="Xóa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>CAM_THUONG_FIX_01</td>
+                                <td>Cam thường cố định</td>
+                                <td>Trạm 110kV Nam Phú Quốc</td>
+                                <td>Camera giám sát tổng quát</td>
+                                <td><span style="color:var(--success)">Đang bật</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-group">
+                                        <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 2v6h-6"></path>
+                                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                                <path d="M3 22v-6h6"></path>
+                                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Di chuyển">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="5 9 2 12 5 15"></polyline>
+                                                <polyline points="9 5 12 2 15 5"></polyline>
+                                                <polyline points="15 19 12 22 9 19"></polyline>
+                                                <polyline points="19 9 22 12 19 15"></polyline>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <line x1="12" y1="2" x2="12" y2="22"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Cấu hình ROI">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-blue" title="Sửa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-red" title="Xóa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>CAM_THUONG_QUAY_01</td>
+                                <td>Cam thường quay quét</td>
+                                <td>Trạm 110kV Nam Phú Quốc</td>
+                                <td>Camera giám sát tổng quát</td>
+                                <td><span style="color:var(--success)">Đang bật</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-group">
+                                        <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M21 2v6h-6"></path>
+                                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                                <path d="M3 22v-6h6"></path>
+                                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Di chuyển">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="5 9 2 12 5 15"></polyline>
+                                                <polyline points="9 5 12 2 15 5"></polyline>
+                                                <polyline points="15 19 12 22 9 19"></polyline>
+                                                <polyline points="19 9 22 12 19 15"></polyline>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <line x1="12" y1="2" x2="12" y2="22"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Tiêu điểm">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <line x1="22" y1="12" x2="18" y2="12"></line>
+                                                <line x1="6" y1="12" x2="2" y2="12"></line>
+                                                <line x1="12" y1="6" x2="12" y2="2"></line>
+                                                <line x1="12" y1="22" x2="12" y2="18"></line>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-gray-outline" title="Cấu hình ROI">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-blue" title="Sửa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <button class="action-btn-circle btn-red" title="Xóa">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- CARD VIEW -->
+                <div id="cardView" class="card-view-grid hidden-view">
+                    <!-- Card 1 -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header"><span class="sc-id">bullet_matnhiet_dn</span><span
+                                style="color:var(--success); font-size:12px">● Online</span></div>
+                        <div class="sc-img-wrap"><img src="images/cam-01.png" class="sc-img" alt="Camera"></div>
+                        <div class="sc-name">Bullet - Mắt Nhiệt - DN</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📍 SD1S_Liên Trì</div>
+                            <div class="sc-info-item">🎥 Camera mắt nhiệt</div>
+                        </div>
+                        <div class="sc-actions">
+                            <div class="action-group">
+                                <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 2v6h-6"></path>
+                                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                        <path d="M3 22v-6h6"></path>
+                                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-blue" title="Sửa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-red" title="Xóa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                        </path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header"><span class="sc-id">bullet_matthuong_dn</span><span
+                                style="color:var(--success); font-size:12px">● Online</span></div>
+                        <div class="sc-img-wrap"><img src="images/cam-02.png" class="sc-img" alt="Camera"></div>
+                        <div class="sc-name">Bullet - Mắt thường DN</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📍 SD1S_Liên Trì</div>
+                            <div class="sc-info-item">🎥 Giám sát tổng quát</div>
+                        </div>
+                        <div class="sc-actions">
+                            <div class="action-group">
+                                <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 2v6h-6"></path>
+                                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                        <path d="M3 22v-6h6"></path>
+                                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-blue" title="Sửa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-red" title="Xóa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                        </path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header"><span class="sc-id">CAM_NHIET_FIX_01</span><span
+                                style="color:var(--success); font-size:12px">● Online</span></div>
+                        <div class="sc-img-wrap"><img src="images/cam-03.png" class="sc-img" alt="Camera"></div>
+                        <div class="sc-name">Cam nhiệt cố định</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📍 Nam Phú Quốc</div>
+                            <div class="sc-info-item">🎥 Camera mắt nhiệt</div>
+                        </div>
+                        <div class="sc-actions">
+                            <div class="action-group">
+                                <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 2v6h-6"></path>
+                                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                        <path d="M3 22v-6h6"></path>
+                                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-blue" title="Sửa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-red" title="Xóa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                        </path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header"><span class="sc-id">CAM_NHIET_QUAY_01</span><span
+                                style="color:var(--success); font-size:12px">● Online</span></div>
+                        <div class="sc-img-wrap"><img src="images/cam-04.png" class="sc-img" alt="Camera"></div>
+                        <div class="sc-name">Cam nhiệt quay quét</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📍 Nam Phú Quốc</div>
+                            <div class="sc-info-item">🎥 Camera mắt nhiệt</div>
+                        </div>
+                        <div class="sc-actions">
+                            <div class="action-group">
+                                <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 2v6h-6"></path>
+                                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                        <path d="M3 22v-6h6"></path>
+                                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-blue" title="Sửa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-red" title="Xóa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                        </path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header"><span class="sc-id">CAM_THUONG_FIX_01</span><span
+                                style="color:var(--success); font-size:12px">● Online</span></div>
+                        <div class="sc-img-wrap"><img src="images/cam-01.png" class="sc-img" alt="Camera"></div>
+                        <div class="sc-name">Cam thường cố định</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📍 Nam Phú Quốc</div>
+                            <div class="sc-info-item">🎥 Giám sát tổng quát</div>
+                        </div>
+                        <div class="sc-actions">
+                            <div class="action-group">
+                                <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 2v6h-6"></path>
+                                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                        <path d="M3 22v-6h6"></path>
+                                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-blue" title="Sửa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-red" title="Xóa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                        </path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header"><span class="sc-id">CAM_THUONG_QUAY_01</span><span
+                                style="color:var(--success); font-size:12px">● Online</span></div>
+                        <div class="sc-img-wrap"><img src="images/cam-02.png" class="sc-img" alt="Camera"></div>
+                        <div class="sc-name">Cam thường quay quét</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📍 Nam Phú Quốc</div>
+                            <div class="sc-info-item">🎥 Giám sát tổng quát</div>
+                        </div>
+                        <div class="sc-actions">
+                            <div class="action-group">
+                                <button class="action-btn-circle btn-gray-outline" title="Đồng bộ">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 2v6h-6"></path>
+                                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                        <path d="M3 22v-6h6"></path>
+                                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-blue" title="Sửa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn-circle btn-red" title="Xóa">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                        </path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-info-bar">
+                    <div>Hiển thị 1-9 trong tổng số 12</div>
+                    <div class="pagination-group">
+                        <select class="select-page-size">
+                            <option>10/trang</option>
+                            <option>20/trang</option>
+                        </select>
+                        <button class="btn-page active">1</button>
+                        <button class="btn-page">2</button>
+                        <div style="font-size: 11px; margin: 0 5px;">Nhảy tới</div>
+                        <input type="text" class="filter-input"
+                            style="width: 40px; height: 32px; padding: 0 5px; text-align: center;" value="1">
+                        <button class="btn-page">➜</button>
+                        <button class="btn-page" title="Cấu hình hiển thị" style="margin-left: 10px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function switchView(view) {
+            const tableView = document.getElementById('tableView');
+            const cardView = document.getElementById('cardView');
+            const btns = document.querySelectorAll('.view-btn');
+
+            if (view === 'table') {
+                tableView.classList.remove('hidden-view');
+                cardView.classList.add('hidden-view');
+                if (btns[0]) btns[0].classList.add('active');
+                if (btns[1]) btns[1].classList.remove('active');
+            } else {
+                tableView.classList.add('hidden-view');
+                cardView.classList.remove('hidden-view');
+                if (btns[1]) btns[1].classList.add('active');
+                if (btns[0]) btns[0].classList.remove('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

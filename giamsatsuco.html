@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFS - ĐƯỜNG DÂY | Giám sát sự cố</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .split-container {
+            grid-column: span 4;
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 20px;
+            height: calc(100vh - 200px);
+        }
+
+        .table-panel {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .detail-panel {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .detail-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-label {
+            font-size: 11px;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+
+        .form-value {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        [data-theme="light"] .form-value {
+            background: #f3f4f6;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-new {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .action-icon-btn {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text-main);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .action-icon-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div style="display:flex; align-items:center">
+            <button class="mobile-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+            </button>
+            <a href="dashboard.html" class="brand" style="text-decoration:none">
+                <div class="logo-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                    </svg>
+                </div> IFS - ĐƯỜNG DÂY
+            </a>
+        </div>
+
+        <div class="nav-menu" id="mainMenu">
+            <div class="nav-wrapper"><a href="dashboard.html" class="nav-link">TRANG CHỦ</a></div>
+            <div class="nav-wrapper"><a href="giamsattructiep.html" class="nav-link">GIÁM SÁT TRỰC TIẾP</a></div>
+            <div class="nav-wrapper"><a href="giamsatsuco.html" class="nav-link">GIÁM SÁT SỰ CỐ</a></div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="dropdown-menu">
+                    <a href="quan_ly_su_co_doi_tuong.html" class="menu-link">Đối tượng xâm nhập vùng cấm</a>
+                    <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link">Cháy khói</a>
+                    <a href="quan_ly_su_co_do_nghieng.html" class="menu-link">Độ nghiêng vượt ngưỡng</a>
+                    <a href="quan_ly_su_co_chieu_cao_an_toan.html" class="menu-link">Chiều cao an toàn phương tiện</a>
+                    <a href="#" class="menu-link">Vật thể lạ</a>
+                    <a href="#" class="menu-link">Đèn báo hiệu</a>
+                </div>
+            </div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="dropdown-menu">
+                    <a href="huong_dan_su_dung.html" class="menu-link">Hướng dẫn sử dụng</a>
+                    <a href="danh_sach_su_co.html" class="menu-link">Báo cáo sự cố đường dây</a>
+                    <a href="bao_cao_su_co_den_hieu.html" class="menu-link">Báo cáo sự cố đèn báo hiệu</a>
+                </div>
+            </div>
+
+            <div class="nav-wrapper">
+                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                 <div class="dropdown-menu">
+                    <a href="thietlapcanhbao_kenhcanhbao.html" class="menu-link">Kênh cảnh báo</a>
+                    <a href="theodoidiemdo_bocanhbao.html" class="menu-link">Bộ cảnh báo</a>
+                 </div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="theme-switch" onclick="toggleTheme()">
+                <div class="switch-knob"></div>
+            </div>
+            <div
+                style="width:32px; height:32px; background:#E5E7EB; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#4B5563">
+                A</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="bread-crumb">Trang chủ / <span>Giám sát sự cố</span></div>
+
+        <div class="grid">
+            <!-- Filter Section -->
+            <div class="card filter-card">
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <div class="filter-label">Loại sự cố</div>
+                        <select class="filter-input">
+                            <option>Chọn giá trị</option>
+                            <option>Phương tiện vi phạm</option>
+                            <option>Cháy khói</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Khu vực</div>
+                        <select class="filter-input">
+                            <option>Chọn giá trị</option>
+                            <option>Phú Quốc</option>
+                            <option>Liên Trì</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Camera giám sát</div>
+                        <select class="filter-input">
+                            <option>Chọn giá trị</option>
+                            <option>CAM149</option>
+                            <option>CAM145</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Trạng thái xử lý</div>
+                        <select class="filter-input">
+                            <option>Tất cả</option>
+                            <option selected>Chưa xử lý</option>
+                            <option>Đã xử lý</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Thời gian bắt đầu từ</div>
+                        <input type="date" class="filter-input">
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-label">Đến</div>
+                        <input type="date" class="filter-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split View -->
+            <div class="split-container">
+                <!-- Left: Table -->
+                <div class="card table-panel">
+                    <div
+                        style="padding: 15px 20px; font-weight: 700; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text-alpha)">
+                        Danh sách sự kiện cảnh báo
+                    </div>
+                    <div style="flex:1; overflow: auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 80px">Action</th>
+                                    <th>STT</th>
+                                    <th>Loại sự cố</th>
+                                    <th>Khu vực</th>
+                                    <th>Camera</th>
+                                    <th>Thời gian bắt đầu</th>
+                                    <th>Thời gian kết thúc</th>
+                                    <th>Tổng số</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; gap:5px">
+                                            <button class="action-icon-btn">▶</button>
+                                            <button class="action-icon-btn">✓</button>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td style="color: #60A5FA">Phương tiện vi phạm</td>
+                                    <td>Phú Quốc</td>
+                                    <td>CAM149</td>
+                                    <td>
+                                        <div>10:25</div>
+                                        <div style="font-size:11px; color:var(--text-sub)">28/01/2026</div>
+                                    </td>
+                                    <td>-</td>
+                                    <td>1</td>
+                                    <td><span class="status-badge status-new">Chưa xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; gap:5px">
+                                            <button class="action-icon-btn">▶</button>
+                                            <button class="action-icon-btn">✓</button>
+                                        </div>
+                                    </td>
+                                    <td>2</td>
+                                    <td style="color: #60A5FA">Phương tiện vi phạm</td>
+                                    <td>Phú Quốc</td>
+                                    <td>CAM149</td>
+                                    <td>
+                                        <div>10:23</div>
+                                        <div style="font-size:11px; color:var(--text-sub)">28/01/2026</div>
+                                    </td>
+                                    <td>-</td>
+                                    <td>1</td>
+                                    <td><span class="status-badge status-new">Chưa xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; gap:5px">
+                                            <button class="action-icon-btn">▶</button>
+                                            <button class="action-icon-btn">✓</button>
+                                        </div>
+                                    </td>
+                                    <td>3</td>
+                                    <td style="color: #60A5FA">Phương tiện vi phạm</td>
+                                    <td>Phú Quốc</td>
+                                    <td>CAM149</td>
+                                    <td>
+                                        <div>10:22</div>
+                                        <div style="font-size:11px; color:var(--text-sub)">28/01/2026</div>
+                                    </td>
+                                    <td>-</td>
+                                    <td>1</td>
+                                    <td><span class="status-badge status-new">Chưa xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; gap:5px">
+                                            <button class="action-icon-btn">▶</button>
+                                            <button class="action-icon-btn">✓</button>
+                                        </div>
+                                    </td>
+                                    <td>4</td>
+                                    <td style="color: #60A5FA">Phương tiện vi phạm</td>
+                                    <td>Phú Quốc</td>
+                                    <td>CAM149</td>
+                                    <td>
+                                        <div>10:18</div>
+                                        <div style="font-size:11px; color:var(--text-sub)">28/01/2026</div>
+                                    </td>
+                                    <td>-</td>
+                                    <td>1</td>
+                                    <td><span class="status-badge status-new">Chưa xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; gap:5px">
+                                            <button class="action-icon-btn">▶</button>
+                                            <button class="action-icon-btn">✓</button>
+                                        </div>
+                                    </td>
+                                    <td>5</td>
+                                    <td style="color: #60A5FA">Phương tiện vi phạm</td>
+                                    <td>Phú Quốc</td>
+                                    <td>CAM149</td>
+                                    <td>
+                                        <div>10:18</div>
+                                        <div style="font-size:11px; color:var(--text-sub)">28/01/2026</div>
+                                    </td>
+                                    <td>-</td>
+                                    <td>1</td>
+                                    <td><span class="status-badge status-new">Chưa xử lý</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-info-bar" style="border-radius: 0;">
+                        <div>Hiển thị 1-9 / 20</div>
+                        <div class="pagination-group">
+                            <button class="btn-page active">1</button>
+                            <button class="btn-page">2</button>
+                            <button class="btn-page">➜</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Detail -->
+                <div class="card detail-panel" style="padding: 20px;">
+                    <div style="display:flex; gap:10px; margin-bottom: 20px; font-size: 13px; color: var(--text-sub)">
+                        <span id="detail-header-title">📷 No Image</span>
+                    </div>
+
+                    <div class="video-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white" style="opacity:0.8">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <div
+                            style="position: absolute; bottom: 10px; left: 10px; display: flex; gap: 10px; width: calc(100% - 20px); align-items: center;">
+                            <span style="font-size: 12px; color: white;">▶ 0:00</span>
+                            <div style="flex:1; height: 3px; background: rgba(255,255,255,0.3)"></div>
+                            <span style="font-size: 12px; color: white;">🔊 [ ]</span>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnails -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 12px; font-weight: 600; margin-bottom: 8px; color: var(--text-sub)">Ảnh
+                            sự kiện</div>
+                        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;">
+                            <img src="images/cam-01.png" class="thumb-item active" onclick="selectThumb(this)">
+                            <img src="images/cam-02.png" class="thumb-item" onclick="selectThumb(this)">
+                            <img src="images/cam-03.png" class="thumb-item" onclick="selectThumb(this)">
+                            <img src="images/cam-04.png" class="thumb-item" onclick="selectThumb(this)">
+                        </div>
+                    </div>
+
+                    <div
+                        style="font-weight: 700; font-size: 15px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--primary)">
+                        Chi tiết sự cố
+                    </div>
+
+                    <div class="detail-form compact">
+                        <div class="form-group">
+                            <span class="form-label">Sự cố</span>
+                            <div class="form-value" id="detail-type">Phương tiện vi phạm</div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Trạng thái</span>
+                            <div class="form-value" id="detail-status">Chưa xử lý</div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Khu vực</span>
+                            <div class="form-value" id="detail-area">Phú Quốc</div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Camera</span>
+                            <div class="form-value" id="detail-cam">CAM149</div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Bắt đầu</span>
+                            <div class="form-value" id="detail-start">10:25 28/01/2026</div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Kết thúc</span>
+                            <div class="form-value" id="detail-end"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .thumb-item {
+            width: 80px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.7;
+            transition: all 0.2s;
+        }
+
+        .thumb-item:hover {
+            opacity: 1;
+        }
+
+        .thumb-item.active {
+            border-color: var(--primary);
+            opacity: 1;
+        }
+
+        .detail-form.compact {
+            gap: 8px 15px;
+            grid-template-columns: 1fr;
+            /* Single column */
+        }
+
+        .detail-form.compact .form-group {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 8px;
+        }
+
+        .detail-form.compact .form-label {
+            margin-bottom: 0;
+            color: var(--text-sub);
+        }
+
+        .detail-form.compact .form-value {
+            padding: 0;
+            font-size: 13px;
+            background: transparent;
+            border: none;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .data-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .data-table tbody tr.selected {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+            border-left: 3px solid var(--primary);
+        }
+
+        [data-theme="light"] .data-table tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="light"] .data-table tbody tr.selected {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Sample data for demonstration
+        const incidents = [
+            { id: 1, type: 'Phương tiện vi phạm', area: 'Phú Quốc', cam: 'CAM149', start: '10:25 28/01/2026', end: '10:45 28/01/2026', status: 'Chưa xử lý', color: '#60A5FA' },
+            { id: 2, type: 'Phương tiện vi phạm', area: 'Phú Quốc', cam: 'CAM149', start: '10:23 28/01/2026', end: '10:40 28/01/2026', status: 'Chưa xử lý', color: '#60A5FA' },
+            { id: 3, type: 'Phương tiện vi phạm', area: 'Phú Quốc', cam: 'CAM149', start: '10:22 28/01/2026', end: '10:35 28/01/2026', status: 'Chưa xử lý', color: '#60A5FA' },
+            { id: 4, type: 'Phương tiện vi phạm', area: 'Phú Quốc', cam: 'CAM149', start: '10:18 28/01/2026', end: '10:30 28/01/2026', status: 'Chưa xử lý', color: '#60A5FA' },
+            { id: 5, type: 'Phương tiện vi phạm', area: 'Phú Quốc', cam: 'CAM149', start: '10:18 28/01/2026', end: '10:28 28/01/2026', status: 'Chưa xử lý', color: '#60A5FA' }
+        ];
+
+        function selectIncident(row, id) {
+            // Highlight row
+            document.querySelectorAll('.data-table tbody tr').forEach(r => r.classList.remove('selected'));
+            row.classList.add('selected');
+
+            // Get data
+            const data = incidents.find(i => i.id === id);
+            if (!data) return;
+
+            // Update Detail Panel
+            const headerTitle = document.getElementById('detail-header-title');
+            if (headerTitle) headerTitle.innerText = data.type;
+
+            document.getElementById('detail-type').innerText = data.type;
+            document.getElementById('detail-area').innerText = data.area;
+            document.getElementById('detail-cam').innerText = data.cam;
+            document.getElementById('detail-status').innerText = data.status;
+            document.getElementById('detail-start').innerText = data.start;
+            document.getElementById('detail-end').innerText = data.end || '';
+
+            // Allow checking logic here (e.g. updating video source if available)
+        }
+
+        function selectThumb(el) {
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Initialize click handlers
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('.data-table tbody tr');
+            rows.forEach((row, index) => {
+                // Add click event
+                row.onclick = () => selectIncident(row, index + 1);
+            });
+
+            // Select first row by default
+            if (rows.length > 0) {
+                selectIncident(rows[0], 1);
+            }
+        });
+    </script>
+</body>
+
+</html>
