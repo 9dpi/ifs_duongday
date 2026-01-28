@@ -35,8 +35,8 @@ MENU_HTML = """<nav class="navbar">
                     <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link">Cháy khói</a>
                     <a href="quan_ly_su_co_do_nghieng.html" class="menu-link">Độ nghiêng vượt ngưỡng</a>
                     <a href="quan_ly_su_co_chieu_cao_an_toan.html" class="menu-link">Chiều cao an toàn phương tiện</a>
-                    <a href="#" class="menu-link">Vật thể lạ</a>
-                    <a href="#" class="menu-link">Đèn báo hiệu</a>
+                    <a href="quan_ly_su_co_vat_the_la.html" class="menu-link">Vật thể lạ</a>
+                    <a href="quan_ly_su_co_den_bao_hieu.html" class="menu-link">Đèn báo hiệu</a>
                 </div>
             </div>
 
@@ -88,25 +88,20 @@ def update_files():
         # Search for exact href match for sub-menu items
         pattern_sub = r'(<a href="{}" class="menu-link">)'.format(re.escape(filename))
         if re.search(pattern_sub, current_menu):
-            current_menu = re.sub(pattern_sub, r'\1'.replace('class="menu-link"', 'class="menu-link active-link"'), current_menu)
+            current_menu = re.sub(pattern_sub, lambda m: m.group(1).replace('class="menu-link"', 'class="menu-link active-link"'), current_menu)
             
-            # If a sub-menu item is active, we must also activate its PARENT nav-link.
-            # We can find the parent by searching backwards from the active link match to the nearest "nav-wrapper" > "nav-link"
-            # But regex is hard for this. 
             # Simplified approach: Determine parent based on filename knowledge.
-            parent_keyword = ""
-            if filename in ["quan_ly_su_co_doi_tuong.html", "quan_ly_su_co_chieu_cao_chay_khoi.htm", "quan_ly_su_co_do_nghieng.html", "quan_ly_su_co_chieu_cao_an_toan.html"]:
-                # Parent: QUẢN LÝ SỰ CỐ
-                # We find the nav-link containing "QUẢN LÝ SỰ CỐ" and add active-link
-                current_menu = current_menu.replace('>QUẢN LÝ SỰ CỐ', ' active-link">QUẢN LÝ SỰ CỐ')
+            # Parent: QUẢN LÝ SỰ CỐ
+            if filename in ["quan_ly_su_co_doi_tuong.html", "quan_ly_su_co_chieu_cao_chay_khoi.htm", "quan_ly_su_co_do_nghieng.html", "quan_ly_su_co_chieu_cao_an_toan.html", "quan_ly_su_co_vat_the_la.html", "quan_ly_su_co_den_bao_hieu.html"]:
+                current_menu = current_menu.replace('class="nav-link">QUẢN LÝ SỰ CỐ', 'class="nav-link active-link">QUẢN LÝ SỰ CỐ')
             
+            # Parent: BÁO CÁO & HDSD
             elif filename in ["huong_dan_su_dung.html", "danh_sach_su_co.html", "bao_cao_su_co_den_hieu.html"]:
-                 # Parent: BÁO CÁO & HDSD
-                current_menu = current_menu.replace('>BÁO CÁO & HDSD', ' active-link">BÁO CÁO & HDSD')
+                 current_menu = current_menu.replace('class="nav-link">BÁO CÁO & HDSD', 'class="nav-link active-link">BÁO CÁO & HDSD')
 
+            # Parent: THIẾT LẬP CẢNH BÁO
             elif filename in ["thietlapcanhbao_kenhcanhbao.html", "theodoidiemdo_bocanhbao.html"]:
-                 # Parent: THIẾT LẬP CẢNH BÁO
-                current_menu = current_menu.replace('>THIẾT LẬP CẢNH BÁO', ' active-link">THIẾT LẬP CẢNH BÁO')
+                 current_menu = current_menu.replace('class="nav-link">THIẾT LẬP CẢNH BÁO', 'class="nav-link active-link">THIẾT LẬP CẢNH BÁO')
 
         else:
             # Search for top-level items

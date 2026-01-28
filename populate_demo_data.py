@@ -394,6 +394,14 @@ def main():
     # 6. bao_cao_su_co_den_hieu.html
     g, t = generate_beacon_items(9)
     update_file("bao_cao_su_co_den_hieu.html", g, t)
+    
+    # 7. quan_ly_su_co_vat_the_la.html
+    g, t = generate_object_items(9)
+    update_file("quan_ly_su_co_vat_the_la.html", g, t)
+
+    # 8. quan_ly_su_co_den_bao_hieu.html
+    g, t = generate_beacon_items(9)
+    update_file("quan_ly_su_co_den_bao_hieu.html", g, t)
 
 if __name__ == "__main__":
     main()

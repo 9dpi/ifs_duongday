@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFS - ĐƯỜNG DÂY | Sự cố Cháy khói</title>
+    <title>IFS - ĐƯỜNG DÂY | Vật thể lạ</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
         rel="stylesheet">
@@ -132,16 +132,16 @@
             text-transform: uppercase;
         }
 
-        .tag-fire {
+        .alert-high {
             background: rgba(239, 68, 68, 0.2);
             color: #EF4444;
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
-        .tag-smoke {
-            background: rgba(107, 114, 128, 0.2);
-            color: #9CA3AF;
-            border: 1px solid rgba(107, 114, 128, 0.2);
+        .alert-med {
+            background: rgba(245, 158, 11, 0.2);
+            color: #F59E0B;
+            border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
         .inc-info-row {
@@ -247,10 +247,10 @@
                 <div class="nav-link active-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
                 <div class="dropdown-menu">
                     <a href="quan_ly_su_co_doi_tuong.html" class="menu-link">Đối tượng xâm nhập vùng cấm</a>
-                    <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link active-link">Cháy khói</a>
+                    <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link">Cháy khói</a>
                     <a href="quan_ly_su_co_do_nghieng.html" class="menu-link">Độ nghiêng vượt ngưỡng</a>
                     <a href="quan_ly_su_co_chieu_cao_an_toan.html" class="menu-link">Chiều cao an toàn phương tiện</a>
-                    <a href="quan_ly_su_co_vat_the_la.html" class="menu-link">Vật thể lạ</a>
+                    <a href="quan_ly_su_co_vat_the_la.html" class="menu-link active-link">Vật thể lạ</a>
                     <a href="quan_ly_su_co_den_bao_hieu.html" class="menu-link">Đèn báo hiệu</a>
                 </div>
             </div>
@@ -284,7 +284,7 @@
     </nav>
 
     <div class="container">
-        <div class="bread-crumb">Quản lý sự cố / <span>Cháy khói</span></div>
+        <div class="bread-crumb">Quản lý sự cố / <span>Vật thể lạ</span></div>
 
         <!-- Filter -->
         <div class="card filter-card">
@@ -293,28 +293,24 @@
                     <div class="filter-label">Khu vực</div>
                     <select class="filter-input">
                         <option>Tất cả</option>
-                        <option>Bình Định</option>
                         <option>Sơn La</option>
+                        <option>Phú Quốc</option>
                     </select>
                 </div>
                 <div class="filter-item">
                     <div class="filter-label">Camera</div>
                     <select class="filter-input">
                         <option>Tất cả</option>
-                        <option>CAM203</option>
+                        <option>CAM145</option>
                         <option>CAM152</option>
                     </select>
                 </div>
                 <div class="filter-item">
-                    <div class="filter-label">Loại</div>
-                    <select class="filter-input">
-                        <option>Tất cả</option>
-                        <option>Lửa</option>
-                        <option>Khói</option>
-                    </select>
+                    <div class="filter-label">Thời gian từ</div>
+                    <input type="date" class="filter-input" value="2025-12-31">
                 </div>
                 <div class="filter-item">
-                    <div class="filter-label">Ngày bắt đầu</div>
+                    <div class="filter-label">Đến ngày</div>
                     <input type="date" class="filter-input">
                 </div>
                 <button class="btn-primary" style="height: 32px; margin-top: 18px;">Tìm kiếm</button>
@@ -326,7 +322,7 @@
             <div
                 style="padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border)">
                 <div style="font-size: 15px; font-weight: 700; color: var(--primary); text-transform: uppercase;">
-                    PHÁT HIỆN CHÁY KHÓI
+                    VẬT THỂ LẠ
                 </div>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="view-switcher">
@@ -359,19 +355,20 @@
 
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">22:39 28/03/2026</div>
+                        <div class="inc-badge tag-object">📦 THẢ DIỀU</div>
+                        <div style="font-size:12px; color:var(--text-sub)">20:59 09/10/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 57</div>
+                        <div class="inc-title">PHÁT HIỆN THẢ DIỀU</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 57
+                            Cột 28 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM689</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
+                        <span style="font-size:12px; color:var(--success)">● Đã xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -380,19 +377,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">16:35 25/08/2026</div>
+                        <div class="inc-badge tag-object">📦 NGƯỜI LEO TRỤ</div>
+                        <div style="font-size:12px; color:var(--text-sub)">16:07 28/12/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 75</div>
+                        <div class="inc-title">PHÁT HIỆN NGƯỜI LEO TRỤ</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 75
+                            Cột 73 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM448</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
+                        <span style="font-size:12px; color:var(--warning)">● Chờ xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -401,19 +399,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">00:08 25/12/2026</div>
+                        <div class="inc-badge tag-object">📦 FLYCAM</div>
+                        <div style="font-size:12px; color:var(--text-sub)">18:48 28/08/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 39</div>
+                        <div class="inc-title">PHÁT HIỆN FLYCAM</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 39
+                            Cột 30 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM985</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
+                        <span style="font-size:12px; color:var(--warning)">● Chờ xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -422,19 +421,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">03:21 28/10/2026</div>
+                        <div class="inc-badge tag-object">📦 NGƯỜI LEO TRỤ</div>
+                        <div style="font-size:12px; color:var(--text-sub)">17:00 22/02/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 33</div>
+                        <div class="inc-title">PHÁT HIỆN NGƯỜI LEO TRỤ</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 33
+                            Cột 54 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM201</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
+                        <span style="font-size:12px; color:var(--success)">● Đã xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -443,19 +443,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">11:24 22/08/2026</div>
+                        <div class="inc-badge tag-object">📦 THẢ DIỀU</div>
+                        <div style="font-size:12px; color:var(--text-sub)">23:17 23/03/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 37</div>
+                        <div class="inc-title">PHÁT HIỆN THẢ DIỀU</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 37
+                            Cột 44 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM822</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--danger)">● Đang cháy</span>
+                        <span style="font-size:12px; color:var(--success)">● Đã xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -464,19 +465,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">19:05 15/12/2026</div>
+                        <div class="inc-badge tag-object">📦 THẢ DIỀU</div>
+                        <div style="font-size:12px; color:var(--text-sub)">21:39 19/05/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 32</div>
+                        <div class="inc-title">PHÁT HIỆN THẢ DIỀU</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 32
+                            Cột 20 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM478</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
+                        <span style="font-size:12px; color:var(--success)">● Đã xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -485,19 +487,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">07:01 10/03/2026</div>
+                        <div class="inc-badge tag-object">📦 FLYCAM</div>
+                        <div style="font-size:12px; color:var(--text-sub)">15:18 25/11/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 61</div>
+                        <div class="inc-title">PHÁT HIỆN FLYCAM</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 61
+                            Cột 26 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM669</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--danger)">● Đang cháy</span>
+                        <span style="font-size:12px; color:var(--warning)">● Chờ xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -506,19 +509,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">06:31 14/05/2026</div>
+                        <div class="inc-badge tag-object">📦 THẢ DIỀU</div>
+                        <div style="font-size:12px; color:var(--text-sub)">23:15 07/08/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 45</div>
+                        <div class="inc-title">PHÁT HIỆN THẢ DIỀU</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 45
+                            Cột 93 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM634</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--success)">● Đã dập tắt</span>
+                        <span style="font-size:12px; color:var(--success)">● Đã xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -527,19 +531,20 @@
                 </div>
                 <div class="card inc-card-new" style="padding: 15px;">
                     <div style="display:flex; justify-content:space-between; align-items:start">
-                        <div class="inc-badge tag-fire">🔥 CHÁY RỪNG</div>
-                        <div style="font-size:12px; color:var(--text-sub)">15:38 20/08/2026</div>
+                        <div class="inc-badge tag-object">📦 THẢ DIỀU</div>
+                        <div style="font-size:12px; color:var(--text-sub)">03:02 06/12/2026</div>
                     </div>
-                    <img src="images/cam-01.png" class="inc-img" alt="Inc">
+                    <img src="images/cam-02.png" class="inc-img" alt="Inc">
                     <div>
-                        <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 83</div>
+                        <div class="inc-title">PHÁT HIỆN THẢ DIỀU</div>
                          <div class="inc-info-row">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            Rừng phòng hộ - Cột 83
+                            Cột 11 - Tuyến Bắc Nam
                         </div>
+                         <div class="inc-info-row">CAMERA: CAM701</div>
                     </div>
                     <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
-                        <span style="font-size:12px; color:var(--danger)">● Đang cháy</span>
+                        <span style="font-size:12px; color:var(--success)">● Đã xử lý</span>
                         <div style="display:flex; gap:10px">
                              <button style="background:transparent; border:none; cursor:pointer">👁️</button>
                              <button style="background:transparent; border:none; cursor:pointer">✏️</button>
@@ -559,7 +564,7 @@
                             <th>Sự cố</th>
                             <th>Khu vực</th>
                             <th>Camera</th>
-                            <th>Loại</th>
+                            <th>Trạng thái</th>
                             <th style="text-align:right">Hành động</th>
                         </tr>
                     </thead>
@@ -567,12 +572,12 @@
 
                         <tr>
                             <td>1</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-001</td>
-                            <td>22:39 28/03/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 57</td>
-                            <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-001</td>
+                            <td>20:59 09/10/2026</td>
+                            <td>Thả diều</td>
+                            <td>Cột 28 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--success)">● Đã xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -581,12 +586,12 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-002</td>
-                            <td>16:35 25/08/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 75</td>
-                            <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-002</td>
+                            <td>16:07 28/12/2026</td>
+                            <td>Người leo trụ</td>
+                            <td>Cột 73 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--warning)">● Chờ xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -595,12 +600,12 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-003</td>
-                            <td>00:08 25/12/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 39</td>
-                            <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-003</td>
+                            <td>18:48 28/08/2026</td>
+                            <td>Flycam</td>
+                            <td>Cột 30 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--warning)">● Chờ xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -609,12 +614,12 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-004</td>
-                            <td>03:21 28/10/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 33</td>
-                            <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-004</td>
+                            <td>17:00 22/02/2026</td>
+                            <td>Người leo trụ</td>
+                            <td>Cột 54 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--success)">● Đã xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -623,12 +628,12 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-005</td>
-                            <td>11:24 22/08/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 37</td>
-                            <td><span style="color:var(--danger)">● Đang cháy</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-005</td>
+                            <td>23:17 23/03/2026</td>
+                            <td>Thả diều</td>
+                            <td>Cột 44 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--success)">● Đã xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -637,12 +642,12 @@
                         </tr>
                         <tr>
                             <td>6</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-006</td>
-                            <td>19:05 15/12/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 32</td>
-                            <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-006</td>
+                            <td>21:39 19/05/2026</td>
+                            <td>Thả diều</td>
+                            <td>Cột 20 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--success)">● Đã xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -651,12 +656,12 @@
                         </tr>
                         <tr>
                             <td>7</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-007</td>
-                            <td>07:01 10/03/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 61</td>
-                            <td><span style="color:var(--danger)">● Đang cháy</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-007</td>
+                            <td>15:18 25/11/2026</td>
+                            <td>Flycam</td>
+                            <td>Cột 26 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--warning)">● Chờ xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -665,12 +670,12 @@
                         </tr>
                         <tr>
                             <td>8</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-008</td>
-                            <td>06:31 14/05/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 45</td>
-                            <td><span style="color:var(--success)">● Đã dập tắt</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-008</td>
+                            <td>23:15 07/08/2026</td>
+                            <td>Thả diều</td>
+                            <td>Cột 93 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--success)">● Đã xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -679,12 +684,12 @@
                         </tr>
                         <tr>
                             <td>9</td>
-                            <td><img src="images/cam-01.png" style="width:60px; height:40px; border-radius:4px"></td>
-                            <td>#FIRE-009</td>
-                            <td>15:38 20/08/2026</td>
-                            <td>Nhiệt độ cao</td>
-                            <td>Rừng phòng hộ - Cột 83</td>
-                            <td><span style="color:var(--danger)">● Đang cháy</span></td>
+                            <td><img src="images/cam-02.png" style="width:60px; height:40px; border-radius:4px"></td>
+                            <td>#OBJ-009</td>
+                            <td>03:02 06/12/2026</td>
+                            <td>Thả diều</td>
+                            <td>Cột 11 - Tuyến Bắc Nam</td>
+                            <td><span style="color:var(--success)">● Đã xử lý</span></td>
                              <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
@@ -697,7 +702,7 @@
 
             <!-- Footer -->
             <div class="page-info-bar">
-                <div>Hiển thị 1-9 trong tổng số 3</div>
+                <div>Hiển thị 1-9 trong tổng số 4</div>
                 <div class="pagination-group">
                     <select class="select-page-size">
                         <option>10/trang</option>
