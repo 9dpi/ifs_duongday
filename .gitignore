@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Documentation and test files
+*.md
+tools/*.ps1
+
+# IDE
+.vscode/
+.idea/
