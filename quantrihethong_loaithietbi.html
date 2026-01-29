@@ -37,7 +37,9 @@
             <div class="nav-wrapper"><a href="giamsatsuco.html" class="nav-link">GIÁM SÁT SỰ CỐ</a></div>
 
             <div class="nav-wrapper">
-                <div class="nav-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="nav-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
                 <div class="dropdown-menu">
                     <a href="quan_ly_su_co_doi_tuong.html" class="menu-link">Đối tượng xâm nhập vùng cấm</a>
                     <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link">Cháy khói</a>
@@ -49,7 +51,9 @@
             </div>
 
             <div class="nav-wrapper">
-                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
                 <div class="dropdown-menu">
                     <a href="huong_dan_su_dung.html" class="menu-link">Hướng dẫn sử dụng</a>
                     <a href="danh_sach_su_co.html" class="menu-link">Báo cáo sự cố đường dây</a>
@@ -58,14 +62,19 @@
             </div>
 
             <div class="nav-wrapper">
-                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
-                 <div class="dropdown-menu">
+                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
+                <div class="dropdown-menu">
                     <a href="thietlapcanhbao_kenhcanhbao.html" class="menu-link">Kênh cảnh báo</a>
                     <a href="theodoidiemdo_bocanhbao.html" class="menu-link">Bộ cảnh báo</a>
-                 </div>
+                </div>
             </div>
             <div class="nav-wrapper">
-                <div class="nav-link active-link">QUẢN TRỊ HỆ THỐNG <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="nav-link active-link">QUẢN TRỊ HỆ THỐNG <svg class="nav-arrow" width="10"
+                        viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
                 <div class="dropdown-menu">
                     <a href="quantrihethong_cambien.html" class="menu-link">Cảm biến</a>
                     <a href="quantrihethong_camera.html" class="menu-link">Camera</a>
@@ -115,7 +124,28 @@
                     style="padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border)">
                     <div style="font-size: 15px; font-weight: 700; color: var(--primary); text-transform: uppercase;">
                         Danh sách loại thiết bị</div>
-                    <button class="btn-add">+ Thêm</button>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="view-switcher">
+                            <button class="view-btn active" onclick="switchView('table')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                </svg>
+                            </button>
+                            <button class="view-btn" onclick="switchView('card')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="btn-add">+ Thêm</button>
+                    </div>
                 </div>
 
                 <div id="tableView">
@@ -210,6 +240,79 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Card View -->
+                <div id="cardView" class="card-view-grid hidden-view">
+                    <div class="sensor-card-item">
+                        <div class="sc-header">
+                            <div class="sc-id">CS</div>
+                            <span class="status-badge"
+                                style="background: rgba(16, 185, 129, 0.1); color: var(--success);">Hoạt động</span>
+                        </div>
+                        <div class="sc-name">Chống sét</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📅 09-07-2023 09:21:52</div>
+                        </div>
+                        <div class="sc-actions">
+                            <button class="btn-add" style="padding: 4px 12px; font-size: 11px;">+ Bộ phận</button>
+                            <button class="action-btn-circle btn-edit-round">✎</button>
+                            <button class="action-btn-circle btn-delete-round">🗑</button>
+                        </div>
+                    </div>
+                    <div class="sensor-card-item">
+                        <div class="sc-header">
+                            <div class="sc-id">DCL</div>
+                            <span class="status-badge"
+                                style="background: rgba(16, 185, 129, 0.1); color: var(--success);">Hoạt động</span>
+                        </div>
+                        <div class="sc-name">Dao cách ly</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📅 09-07-2023 09:27:37</div>
+                        </div>
+                        <div class="sc-actions">
+                            <button class="btn-add" style="padding: 4px 12px; font-size: 11px;">+ Bộ phận</button>
+                            <button class="action-btn-circle btn-edit-round">✎</button>
+                            <button class="action-btn-circle btn-delete-round">🗑</button>
+                        </div>
+                    </div>
+                    <!-- Combined more items for demo -->
+                    <div class="sensor-card-item">
+                        <div class="sc-header">
+                            <div class="sc-id">MBA</div>
+                            <span class="status-badge"
+                                style="background: rgba(16, 185, 129, 0.1); color: var(--success);">Hoạt động</span>
+                        </div>
+                        <div class="sc-name">Máy biến áp lực (Full)</div>
+                        <div class="sc-info">
+                            <div class="sc-info-item">📅 06-07-2023 20:05:05</div>
+                        </div>
+                        <div class="sc-actions">
+                            <button class="btn-add" style="padding: 4px 12px; font-size: 11px;">+ Bộ phận</button>
+                            <button class="action-btn-circle btn-edit-round">✎</button>
+                            <button class="action-btn-circle btn-delete-round">🗑</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function switchView(view) {
+                        const tableView = document.getElementById('tableView');
+                        const cardView = document.getElementById('cardView');
+                        const btns = document.querySelectorAll('.view-btn');
+
+                        if (view === 'table') {
+                            tableView.classList.remove('hidden-view');
+                            cardView.classList.add('hidden-view');
+                            if (btns[0]) btns[0].classList.add('active');
+                            if (btns[1]) btns[1].classList.remove('active');
+                        } else {
+                            tableView.classList.add('hidden-view');
+                            cardView.classList.remove('hidden-view');
+                            if (btns[1]) btns[1].classList.add('active');
+                            if (btns[0]) btns[0].classList.remove('active');
+                        }
+                    }
+                </script>
 
                 <div class="page-info-bar">
                     <div>Hiển thị 1-9 trong tổng số 7</div>

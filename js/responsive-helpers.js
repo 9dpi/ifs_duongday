@@ -29,17 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
         addSidebarToggleButton();
     }
 
-    // Auto-switch to card view on mobile for management pages
-    if (window.location.pathname.includes('quantrihethong_camera') ||
-        window.location.pathname.includes('quantrihethong_cambien') ||
-        window.location.pathname.includes('quantrihethong_nguoidung') ||
-        window.location.pathname.includes('quantrihethong_thietbi') ||
-        window.location.pathname.includes('quantrihethong_khuvuc') ||        // ⭐ THÊM
-        window.location.pathname.includes('theodoidiemdo_canhbao') ||
-        window.location.pathname.includes('theodoidiemdo_canhbaoai') ||
-        window.location.pathname.includes('theodoidiemdo_nhatkynhietdo') ||
-        window.location.pathname.includes('theodoidiemdo_bocanhbao') ||      // ⭐ THÊM
-        window.location.pathname.includes('thietlapcanhbao_kenhcanhbao')) {  // ⭐ THÊM
+    // Auto-switch to card view on mobile if both table and card views exist
+    const tableView = document.getElementById('tableView');
+    const cardView = document.getElementById('cardView');
+    if (tableView && cardView) {
         autoSwitchViewOnMobile();
     }
 
@@ -200,16 +193,9 @@ window.addEventListener('resize', function () {
             }
         }
 
-        if (window.location.pathname.includes('quantrihethong_camera') ||
-            window.location.pathname.includes('quantrihethong_cambien') ||
-            window.location.pathname.includes('quantrihethong_nguoidung') ||
-            window.location.pathname.includes('quantrihethong_thietbi') ||
-            window.location.pathname.includes('quantrihethong_khuvuc') ||        // ⭐ THÊM
-            window.location.pathname.includes('theodoidiemdo_canhbao') ||
-            window.location.pathname.includes('theodoidiemdo_canhbaoai') ||
-            window.location.pathname.includes('theodoidiemdo_nhatkynhietdo') ||
-            window.location.pathname.includes('theodoidiemdo_bocanhbao') ||      // ⭐ THÊM
-            window.location.pathname.includes('thietlapcanhbao_kenhcanhbao')) {  // ⭐ THÊM
+        const tableView = document.getElementById('tableView');
+        const cardView = document.getElementById('cardView');
+        if (tableView && cardView) {
             autoSwitchViewOnMobile();
         }
     }, 250);
