@@ -244,7 +244,9 @@
             <div class="nav-wrapper"><a href="giamsatsuco.html" class="nav-link">GIÁM SÁT SỰ CỐ</a></div>
 
             <div class="nav-wrapper">
-                <div class="nav-link active-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="nav-link active-link">QUẢN LÝ SỰ CỐ <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
                 <div class="dropdown-menu">
                     <a href="quan_ly_su_co_doi_tuong.html" class="menu-link">Đối tượng xâm nhập vùng cấm</a>
                     <a href="quan_ly_su_co_chieu_cao_chay_khoi.htm" class="menu-link active-link">Cháy khói</a>
@@ -256,7 +258,9 @@
             </div>
 
             <div class="nav-wrapper">
-                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="nav-link">BÁO CÁO & HDSD <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
                 <div class="dropdown-menu">
                     <a href="huong_dan_su_dung.html" class="menu-link">Hướng dẫn sử dụng</a>
                     <a href="danh_sach_su_co.html" class="menu-link">Báo cáo sự cố đường dây</a>
@@ -265,14 +269,18 @@
             </div>
 
             <div class="nav-wrapper">
-                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
-                 <div class="dropdown-menu">
+                <div class="nav-link">THIẾT LẬP CẢNH BÁO <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
+                <div class="dropdown-menu">
                     <a href="thietlapcanhbao_kenhcanhbao.html" class="menu-link">Kênh cảnh báo</a>
                     <a href="theodoidiemdo_bocanhbao.html" class="menu-link">Bộ cảnh báo</a>
-                 </div>
+                </div>
             </div>
             <div class="nav-wrapper">
-                <div class="nav-link">QUẢN TRỊ HỆ THỐNG <svg class="nav-arrow" width="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg></div>
+                <div class="nav-link">QUẢN TRỊ HỆ THỐNG <svg class="nav-arrow" width="10" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg></div>
                 <div class="dropdown-menu">
                     <a href="quantrihethong_cambien.html" class="menu-link">Cảm biến</a>
                     <a href="quantrihethong_camera.html" class="menu-link">Camera</a>
@@ -325,7 +333,17 @@
                     </select>
                 </div>
                 <div class="filter-item">
+                    <div class="filter-label">Trạng thái xử lý</div>
+                    <select class="filter-input">
+                        <option>Tất cả</option>
+                    </select>
+                </div>
+                <div class="filter-item">
                     <div class="filter-label">Ngày bắt đầu</div>
+                    <input type="date" class="filter-input">
+                </div>
+                <div class="filter-item">
+                    <div class="filter-label">Ngày kết thúc</div>
                     <input type="date" class="filter-input">
                 </div>
                 <button class="btn-primary" style="height: 32px; margin-top: 18px;">Tìm kiếm</button>
@@ -376,16 +394,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 57</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 57
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -397,16 +420,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 75</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 75
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -418,16 +446,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 39</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 39
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -439,16 +472,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 33</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 33
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -460,16 +498,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 37</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 37
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--danger)">● Đang cháy</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -481,16 +524,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 32</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 32
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--warning)">● Cảnh báo khói</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -502,16 +550,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 61</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 61
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--danger)">● Đang cháy</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -523,16 +576,21 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 45</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 45
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--success)">● Đã dập tắt</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
@@ -544,20 +602,25 @@
                     <img src="images/cam-01.png" class="inc-img" alt="Inc">
                     <div>
                         <div class="inc-title">CẢNH BÁO NHIỆT KHU VỰC CỘT 83</div>
-                         <div class="inc-info-row">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div class="inc-info-row">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                             Rừng phòng hộ - Cột 83
                         </div>
                     </div>
-                    <div style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
+                    <div
+                        style="margin-top:auto; padding-top:10px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center">
                         <span style="font-size:12px; color:var(--danger)">● Đang cháy</span>
                         <div style="display:flex; gap:10px">
-                             <button style="background:transparent; border:none; cursor:pointer">👁️</button>
-                             <button style="background:transparent; border:none; cursor:pointer">✏️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">👁️</button>
+                            <button style="background:transparent; border:none; cursor:pointer">✏️</button>
                         </div>
                     </div>
                 </div>
-</div>
+            </div>
 
             <!-- Table View -->
             <div id="tableView" class="hidden-view">
@@ -584,7 +647,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 57</td>
                             <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -598,7 +661,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 75</td>
                             <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -612,7 +675,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 39</td>
                             <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -626,7 +689,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 33</td>
                             <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -640,7 +703,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 37</td>
                             <td><span style="color:var(--danger)">● Đang cháy</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -654,7 +717,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 32</td>
                             <td><span style="color:var(--warning)">● Cảnh báo khói</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -668,7 +731,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 61</td>
                             <td><span style="color:var(--danger)">● Đang cháy</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -682,7 +745,7 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 45</td>
                             <td><span style="color:var(--success)">● Đã dập tắt</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
@@ -696,13 +759,13 @@
                             <td>Nhiệt độ cao</td>
                             <td>Rừng phòng hộ - Cột 83</td>
                             <td><span style="color:var(--danger)">● Đang cháy</span></td>
-                             <td style="text-align:center">
+                            <td style="text-align:center">
                                 <button class="action-btn-circle">👁️</button>
                                 <button class="action-btn-circle">✎</button>
                                 <button class="action-btn-circle">🗑️</button>
                             </td>
                         </tr>
-</tbody>
+                    </tbody>
                 </table>
             </div>
 
