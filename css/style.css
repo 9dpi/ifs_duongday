@@ -93,6 +93,7 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: var(--shadow);
+    margin-bottom: 10px;
 }
 
 .brand {
@@ -461,14 +462,7 @@ body {
 }
 
 .bread-crumb {
-    font-size: 13px;
-    color: var(--text-sub);
-    margin-bottom: 20px;
-}
-
-.bread-crumb span {
-    color: var(--primary);
-    font-weight: 600;
+    display: none;
 }
 
 .nav-menu {
@@ -656,7 +650,8 @@ body {
 .container {
     max-width: unset;
     margin: 0;
-    padding: 24px;
+    padding: 5px 24px 24px 24px;
+    /* Reduced top padding */
     width: 100%;
 }
 

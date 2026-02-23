@@ -64,7 +64,7 @@
 
     /* === CONTAINER & GRID === */
     .container {
-        padding: 16px;
+        padding: 5px 16px 16px 16px;
     }
 
     .grid {
@@ -316,8 +316,7 @@
 
     /* === BREADCRUMB === */
     .bread-crumb {
-        font-size: 12px;
-        margin-bottom: 12px;
+        display: none;
     }
 
     /* === CARD HEADERS === */
